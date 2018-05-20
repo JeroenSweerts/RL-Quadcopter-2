@@ -3,6 +3,7 @@ import copy
 
 class OUNoise:
     """Ornstein-Uhlenbeck process."""
+
     def __init__(self, size, mu, theta, sigma):
         """Initialize parameters and noise process."""
         self.mu = mu * np.ones(size)
@@ -20,3 +21,4 @@ class OUNoise:
         dx = self.theta * (self.mu - x) + self.sigma * np.random.randn(len(x))
         self.state = x + dx
         return self.state
+

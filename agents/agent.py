@@ -1,3 +1,4 @@
+# TODO: your agent here!
 from agents.actor import Actor
 from agents.critic import Critic
 from agents.replaybuffer import ReplayBuffer
@@ -31,13 +32,13 @@ class DDPG():
         self.exploration_sigma = 0.2
         self.noise = OUNoise(self.action_size, self.exploration_mu, self.exploration_theta, self.exploration_sigma)
 
-        # Replay memory
+        # Replay memory0
         self.buffer_size = 100000
         self.batch_size = 64
         self.memory = ReplayBuffer(self.buffer_size, self.batch_size)
 
         # Algorithm parameters
-        self.gamma = 0.99  # discount factor
+        self.gamma = 0.9  # discount factor
         self.tau = 0.01  # for soft update of target parameters
 
     def reset_episode(self):
@@ -88,7 +89,7 @@ class DDPG():
 
         # Soft-update target models
         self.soft_update(self.critic_local.model, self.critic_target.model)
-        self.soft_update(self.actor_local.model, self.actor_target.model)
+        self.soft_update(self.actor_local.model, self.actor_target.model)   
 
     def soft_update(self, local_model, target_model):
         """Soft update model parameters."""

@@ -1,11 +1,14 @@
 import numpy as np
 import csv
 
+
 def C(x):
     return np.cos(x)
 
+
 def S(x):
     return np.sin(x)
+
 
 def earth_to_body_frame(ii, jj, kk):
     # C^b_n
@@ -14,9 +17,11 @@ def earth_to_body_frame(ii, jj, kk):
          [-S(jj), C(jj) * S(ii), C(jj) * C(ii)]]
     return np.array(R)
 
+
 def body_to_earth_frame(ii, jj, kk):
     # C^n_b
     return np.transpose(earth_to_body_frame(ii, jj, kk))
+
 
 class PhysicsSim():
     def __init__(self, init_pose=None, init_velocities=None, init_angle_velocities=None, runtime=5.):
